@@ -89,13 +89,21 @@
 
             </androidx.cardview.widget.CardView>
 
-
-
-
-
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/loading_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading.............."
+        android:textSize="25dp"
+        android:fontFamily="@font/agencyfb"
+        android:textColor="#260093"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+    </TextView>
 
 
 
