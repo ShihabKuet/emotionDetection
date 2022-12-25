@@ -8,11 +8,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,8 +26,10 @@ import java.io.IOException;
 
 public class StorageActivity extends AppCompatActivity {
 
-    private Button select_image;
-    private Button select_from_camera;
+
+    //private Button select_from_camera;
+    private ImageButton select_from_camera;
+    private ImageButton select_image;
     private ImageView predicted_image_view;
     private TextView emotion_result_txt;
     private facialExpressionRecognition facialExpressionRecognition;
@@ -41,6 +45,8 @@ public class StorageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
+
+        getSupportActionBar().hide();
 
         select_image = findViewById(R.id.select_image);
         select_from_camera = findViewById(R.id.select_from_camera);
@@ -68,12 +74,14 @@ public class StorageActivity extends AppCompatActivity {
         select_from_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, SELECT_FROM_CAMERA);
-                    //startActivityForResult(Intent.createChooser(cameraIntent,"Select Image"),SELECT_FROM_CAMERA);
-                } else {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, SELECT_FROM_CAMERA);
+                        //startActivityForResult(Intent.createChooser(cameraIntent,"Select Image"),SELECT_FROM_CAMERA);
+                    } else {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
+                    }
                 }
             }
         });
@@ -110,6 +118,8 @@ public class StorageActivity extends AppCompatActivity {
                     bitmap1 = Bitmap.createBitmap(selected_image.cols(),selected_image.rows(),Bitmap.Config.ARGB_8888);
                     Utils.matToBitmap(selected_image,bitmap1);
                     predicted_image_view.setImageBitmap(bitmap1);
+                    String emotion_result = facialExpressionRecognition.emotion_s;
+                    emotion_result_txt.setText(emotion_result);
                 }
             }
             else if(requestCode==SELECT_FROM_CAMERA){

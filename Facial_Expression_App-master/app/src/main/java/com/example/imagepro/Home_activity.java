@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.opencv.android.OpenCVLoader;
 
@@ -28,6 +29,7 @@ public class Home_activity extends AppCompatActivity {
 
     private Button open_camera;
     private Button open_storage;
+    private TextView loading_txt;
     AlertDialog.Builder builder;
 
     @Override
@@ -40,6 +42,9 @@ public class Home_activity extends AppCompatActivity {
 //        animationDrawable.setEnterFadeDuration(2000);
 //        animationDrawable.setExitFadeDuration(2000);
 //        animationDrawable.start();
+
+        loading_txt = findViewById(R.id.loading_txt);
+        loading_txt.setVisibility(View.INVISIBLE);
 
         getSupportActionBar().hide();
 
