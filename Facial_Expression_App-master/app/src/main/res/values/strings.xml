@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ImagePro</string>
+    <string name="detects_fac">
+
+Detects facial expression \nand matches it to human emotions
+</string>
+</resources>

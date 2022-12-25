@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_list"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/main_layout">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="274dp"
+        android:layout_height="274dp"
+        app:srcCompat="@drawable/logo_convert"/>
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:src="@drawable/edect"
+        android:layout_marginTop="10dp">
+    </pl.droidsonroids.gif.GifImageView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detects facial expression \nand matches it to human emotions"
+        android:textColor="#260093"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textSize="26dp"
+        android:fontFamily="@font/agencyfb"
+        android:textFontWeight="500"
+        >
+    </TextView>
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/homebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_home_bg"
+        android:layout_marginTop="20dp"
+        android:text="Let's Start"
+        android:fontFamily="@font/agencyfb"
+        android:textSize="25dp"
+        android:textFontWeight="1000"
+        android:textColor="@color/white">
+    </androidx.appcompat.widget.AppCompatButton>
+    <TextView
+        android:id="@+id/loading_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading.............."
+        android:textSize="25dp"
+        android:fontFamily="@font/agencyfb"
+        android:textColor="#260093"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+
+
+
+
+
+</LinearLayout>
